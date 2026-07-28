@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teste de Software: por que testar antes de entregar?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#conceito">Ir para o conteúdo</a>
+  <header>
+    <div class="header-layout">
+      <div>
+        <p class="header-kicker">Fundamentos e prática</p>
+        <h1>Teste de software</h1>
+        <p class="header-copy">Testar software é executar cenários definidos para comparar o resultado obtido com o esperado. A equipe registra as falhas e corrige os defeitos antes da publicação.</p>
+        <p class="postit">Os termos apresentados aqui aparecem no quiz, no caça-palavras e na forca.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Ciclo de teste">
+        <div class="report-header"><span>CHECKLIST</span><span>3 ITENS</span></div>
+        <h2>Antes de liberar uma versão</h2>
+        <ul class="test-flow">
+          <li><i data-lucide="file-check-2"></i><span><strong>Requisito</strong>A função atende à regra combinada?</span></li>
+          <li><i data-lucide="search-check"></i><span><strong>Cenários</strong>A equipe testou entradas válidas e inválidas?</span></li>
+          <li><i data-lucide="shield-check"></i><span><strong>Defeitos</strong>A equipe corrigiu os problemas críticos?</span></li>
+        </ul>
+        <p class="report-footer"><span></span>Anote o cenário, o resultado e a evidência.</p>
+      </aside>
+    </div>
+    <div class="header-notes" aria-label="Princípios do teste de software">
+      <div class="header-note"><strong>01</strong><p>Defina o resultado esperado antes de executar.</p></div>
+      <div class="header-note"><strong>02</strong><p>Registre dados, passos e evidências do teste.</p></div>
+      <div class="header-note"><strong>03</strong><p>Corrija o defeito e repita o mesmo cenário.</p></div>
+    </div>
+  </header>
+
+  <nav id="nav" aria-label="Roteiro de estudo">
+    <a href="#conceito"><i data-lucide="circle-help"></i>O que é?</a>
+    <a href="#importancia"><i data-lucide="shield-check"></i>Importância</a>
+    <a href="#exemplos"><i data-lucide="file-warning"></i>Casos reais</a>
+    <a href="#tipos"><i data-lucide="blocks"></i>Tipos</a>
+    <a href="#quiz"><i data-lucide="clipboard-check"></i>Quiz</a>
+    <a href="#palavras"><i data-lucide="grid-3x3"></i>Caça-palavras</a>
+    <a href="#forca"><i data-lucide="letter-text"></i>Forca</a>
+  </nav>
+
+  <main>
+
+    <section id="conceito">
+      <div class="eyebrow">01. Conceito</div>
+      <h2 class="title">O que é teste de software?</h2>
+      <p>
+        Teste de software é a execução planejada de um sistema para comparar o resultado obtido com o resultado esperado. Quem testa cria cenários, usa dados definidos e registra o que aconteceu.
+      </p>
+      <p>
+        Ao testar, a equipe verifica os requisitos e encontra defeitos antes da publicação. Ela usa o resultado como evidência do comportamento observado, não como prova de que o sistema está livre de erros.
+      </p>
+
+      <h3>Diferenciando os termos</h3>
+      <div class="terms-grid">
+        <div class="term">
+          <strong>Erro</strong>
+          <p>Uma pessoa interpreta ou implementa uma regra de forma incorreta.</p>
+        </div>
+        <div class="term">
+          <strong>Defeito / Bug</strong>
+          <p>O erro deixa um problema no código, na interface ou na regra de negócio.</p>
+        </div>
+        <div class="term">
+          <strong>Falha</strong>
+          <p>Durante o uso, o sistema produz um resultado diferente do esperado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="importancia">
+      <div class="eyebrow">02. Por que testar</div>
+      <h2 class="title">Por que testar?</h2>
+      <p>
+        A equipe corrige um defeito com menos custo quando ainda trabalha na mesma alteração. Depois da publicação, o mesmo problema pode interromper o serviço, expor dados e exigir uma correção urgente.
+      </p>
+
+      <div class="card">
+        <h3 style="margin-top:0">Com testes, a equipe:</h3>
+        <ul class="benefits">
+          <li>Encontra defeitos antes da publicação.</li>
+          <li>Confirma regras de negócio com cenários verificáveis.</li>
+          <li>Detecta quando uma alteração quebra uma função pronta.</li>
+          <li>Mede o comportamento do sistema sob carga.</li>
+          <li>Revela acessos indevidos e exposição de dados.</li>
+          <li>Reduz o retrabalho depois da entrega.</li>
+          <li>Registra evidências para aprovar ou rejeitar uma versão.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="exemplos">
+      <div class="eyebrow">03. Casos reais</div>
+      <h2 class="title">Projetos afetados por falhas de software</h2>
+      <p>Estes projetos acumularam defeitos, atrasos ou problemas de integração e não chegaram à operação planejada.</p>
+
+      <div class="fail-case">
+        <span class="tag">ABANDONADO</span>
+        <h3>FBI Virtual Case File</h3>
+        <p>O FBI encomendou o Virtual Case File para organizar investigações. A equipe de revisão registrou quase 400 problemas. A agência considerou o sistema inadequado para uso e encerrou o projeto.</p>
+        <span class="source">Fonte: FBI Archives</span>
+      </div>
+
+      <div class="fail-case">
+        <span class="tag">PARALISADO</span>
+        <h3>Canadian Firearms Information System II</h3>
+        <p>O governo canadense contratou um novo sistema para substituir o cadastro de armas. No prazo previsto, o governo ainda não tinha uma aplicação funcional e os testes indicavam problemas de desempenho. O governo suspendeu o trabalho.</p>
+        <span class="source">Fonte: House of Commons Canada</span>
+      </div>
+
+      <div class="fail-case">
+        <span class="tag">ENCERRADO</span>
+        <h3>FiReControl, Reino Unido</h3>
+        <p>O governo britânico planejou uma rede nacional para substituir as salas locais de controle dos bombeiros. Em 2010, encerrou o projeto sem colocar em operação o sistema previsto.</p>
+        <span class="source">Fonte: UK Parliament</span>
+      </div>
+
+      <div class="fail-case">
+        <span class="tag">ATRASADO</span>
+        <h3>Sistema de bagagens do Aeroporto de Denver</h3>
+        <p>Durante os testes do sistema automatizado de bagagens, a equipe encontrou problemas graves. As correções atrasaram a abertura do aeroporto, e a solução completa não entrou em operação como planejado.</p>
+        <span class="source">Fonte: Computerworld</span>
+      </div>
+    </section>
+
+    <section id="tipos">
+      <div class="eyebrow">04. Categorias</div>
+      <h2 class="title">Tipos de teste de software</h2>
+      <div class="types-grid">
+        <div class="type-card"><span class="icon"><i data-lucide="braces"></i><small>UNIT</small></span><h3>Teste unitário</h3><p>Executa uma função ou método de forma isolada.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="combine"></i><small>INTG</small></span><h3>Teste de integração</h3><p>Confere a troca de dados entre módulos, serviços ou bancos.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="monitor-check"></i><small>SYS</small></span><h3>Teste de sistema</h3><p>Executa o sistema completo no ambiente de teste.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="badge-check"></i><small>UAT</small></span><h3>Teste de aceitação</h3><p>O cliente ou usuário confirma se a entrega atende ao combinado.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="list-checks"></i><small>FUNC</small></span><h3>Teste funcional</h3><p>Compara a resposta de cada função com o requisito.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="refresh-cw"></i><small>REGR</small></span><h3>Teste de regressão</h3><p>Repete testes já aprovados depois de uma alteração.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="gauge"></i><small>PERF</small></span><h3>Teste de desempenho</h3><p>Mede tempo de resposta, estabilidade e uso de recursos.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="users"></i><small>LOAD</small></span><h3>Teste de carga</h3><p>Simula muitos acessos ou operações ao mesmo tempo.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="shield-check"></i><small>SEC</small></span><h3>Teste de segurança</h3><p>Procura acessos indevidos, vazamentos e configurações frágeis.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="mouse-pointer-click"></i><small>UX</small></span><h3>Teste de usabilidade</h3><p>Observa se o usuário entende a interface e conclui tarefas.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="hand"></i><small>MAN</small></span><h3>Teste manual</h3><p>Uma pessoa executa o cenário e registra o resultado.</p></div>
+        <div class="type-card"><span class="icon"><i data-lucide="bot"></i><small>AUTO</small></span><h3>Teste automatizado</h3><p>Um script executa verificações repetíveis e compara resultados.</p></div>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <div class="eyebrow">05. Revisão</div>
+      <h2 class="title">Quiz sobre o conteúdo</h2>
+
+      <div class="quiz-card">
+        <h3>10 perguntas</h3>
+        <p class="quiz-sub" id="quiz-progress-label">Pergunta 1 de 10</p>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+
+        <div id="quiz-body">
+          <h2 id="question" class="question-title">Pergunta aqui</h2>
+          <div id="options" class="options-grid"></div>
+          <button id="next-btn" class="btn-action" style="display: none;">Próxima</button>
+        </div>
+
+        <div id="result-container" class="score-container" style="display: none;">
+          <span class="score-emoji" id="score-emoji">RESULTADO</span>
+          <p class="score-text" id="score"></p>
+          <p class="score-msg" id="score-msg"></p>
+          <div class="rank-entry">
+            <label>Seu nome<input id="quiz-name" maxlength="18" placeholder="Digite seu nome"></label>
+            <button class="btn-action" data-submit-score="quiz">Salvar pontos</button>
+          </div>
+          <p id="quiz-feedback" class="rank-feedback"></p>
+          <button id="restart-btn" class="btn-action">Refazer quiz</button>
+        </div>
+      </div>
+      <aside class="ranking quiz-ranking"><h3>Ranking do quiz</h3><ol id="quiz-ranking"></ol><p class="empty">Responda às dez perguntas para liberar sua pontuação.</p></aside>
+    </section>
+
+    <section id="palavras" class="game-section">
+      <div class="eyebrow">06. Vocabulário</div>
+      <h2 class="title">Caça-palavras</h2>
+      <div class="game-grid">
+        <div class="game-stage">
+          <p class="game-intro">Selecione a primeira e a última letra de cada termo. As palavras aparecem na horizontal ou vertical e podem se cruzar.</p>
+          <div id="word-list" class="word-list" aria-label="Palavras para encontrar"></div>
+          <div id="word-board" class="word-board" aria-label="Tabuleiro de caça palavras"></div>
+          <p id="word-status" class="game-status" aria-live="polite"></p>
+          <div class="rank-entry">
+            <label>Seu nome<input id="word-name" maxlength="18" placeholder="Digite seu nome"></label>
+            <button class="btn-action" data-submit-score="palavras">Salvar pontos</button>
+          </div>
+          <p id="word-feedback" class="rank-feedback"></p>
+        </div>
+        <aside class="ranking"><h3>Ranking</h3><ol id="palavras-ranking"></ol><p class="empty">Encontre as dez palavras para liberar sua pontuação.</p></aside>
+      </div>
+    </section>
+
+    <section id="forca" class="game-section">
+      <div class="eyebrow">07. Termo técnico</div>
+      <h2 class="title">Jogo da forca</h2>
+      <div class="game-grid">
+        <div class="game-stage">
+          <div class="hangman-layout">
+            <div class="hangman-art" aria-hidden="true"><svg viewBox="0 0 140 190"><path d="M15 175h80M35 175V15h70M35 15l-20 24M105 15v25"/><circle id="hang-head" cx="105" cy="57" r="16" class="hang-piece"/><path id="hang-body" d="M105 73v50" class="hang-piece"/><path id="hang-arm-left" d="M105 90L80 112" class="hang-piece"/><path id="hang-arm-right" d="M105 90l25 22" class="hang-piece"/><path id="hang-leg-left" d="M105 123L83 153" class="hang-piece"/><path id="hang-leg-right" d="M105 123l22 30" class="hang-piece"/></svg></div>
+            <div>
+              <p id="hang-hint" class="game-intro"></p>
+              <p id="hang-word" class="hangman-word" aria-live="polite"></p>
+              <p id="hang-status" class="game-status" aria-live="polite"></p>
+              <div id="hang-keypad" class="keypad" aria-label="Teclado do jogo da forca"></div>
+              <button id="hang-reset" class="btn-action">Nova palavra</button>
+            </div>
+          </div>
+          <div class="rank-entry">
+            <label>Seu nome<input id="hang-name" maxlength="18" placeholder="Digite seu nome"></label>
+            <button class="btn-action" data-submit-score="forca">Salvar pontos</button>
+          </div>
+          <p id="hang-feedback" class="rank-feedback"></p>
+        </div>
+        <aside class="ranking"><h3>Ranking</h3><ol id="forca-ranking"></ol><p class="empty">Resolva a palavra para liberar sua pontuação.</p></aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-mark"><i data-lucide="badge-check"></i><strong>Teste de software</strong></div>
+    <p>Conceitos, casos reais e atividades sobre teste de software.</p>
+  </footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
